@@ -1,9 +1,7 @@
-<?php 
+<?php
 /* VERSION CHANGE LOG
-Version 1.0.8
-Update [2.2] to include post types b2p_program and gf_workout
-Removed [2.3] b2p_workout_shortcode since it is no longer needed
-Removed b2p_workout_shortcode add_shortcode function from [2.1]
+Version 1.1.4
+Moved entire project to GitHub 4/1/18
 */
 
 
@@ -11,7 +9,7 @@ Removed b2p_workout_shortcode add_shortcode function from [2.1]
 /* TABLE OF CONTENTS */
 
 /*
-	
+
 	1. HOOKS
 		1.1 - Registers all our custom shortcodes on init
 		1.2 - Registers action to remove admin bar
@@ -42,7 +40,7 @@ Removed b2p_workout_shortcode add_shortcode function from [2.1]
 
 	4. EXTERNAL SCRIPTS
         4.1 - Loads external files into PUBLIC website
-	
+
 	5. ACTIONS
         5.1 - Update weight value for each set in exercise
 		5.1b - Update results value for each exercise
@@ -116,7 +114,7 @@ add_action( 'wp_ajax_hfc_update_fit_test','hfc_update_fit_test' ); 			// Fit-Tes
 // 1.8
 // hint: Load external files to public website
 add_action( 'wp_enqueue_scripts', 'b2p_public_scripts' );
-add_action( 'wp_enqueue_scripts', 'my_enqueue_assets' ); 
+add_action( 'wp_enqueue_scripts', 'my_enqueue_assets' );
 
 // 1.9
 // hint: add filter by author to program admin page
@@ -141,22 +139,22 @@ add_action('pre_get_posts','add_author_filter_to_fit_test_query');  // added for
 // 2.1
 // hint: registers all our custom shortcodes
 function b2p_register_shortcodes() {
-	
+
 	add_shortcode( 'b2p_active_list', 'b2p_active_shortcode' );
     add_shortcode( 'b2p_active_tests', 'b2p_active_test_shortcode' );
-	
+
 }
 
 // 2.2
 // hint: list active program posts using shortcode [b2p_active_list]
 function b2p_active_shortcode( $args, $content="") {
 
-	// setup our output variable - the form html 
-		
+	// setup our output variable - the form html
+
 	global $post;
 	$current_user = wp_get_current_user();
 	$member_name = $current_user->first_name . " " . $current_user->last_name;
-	
+
 	$user_args = array(
 		'posts_per_page'   => 15,
 		'post_type' => array('b2p_program', 'gf_workout'),
@@ -165,37 +163,37 @@ function b2p_active_shortcode( $args, $content="") {
 		'order' => 'ASC',
 		'post_status' => 'publish',
 	);
-	
+
 	$output = '<div class="member_post_sidebar">';
-		
+
 		$myposts = get_posts( $user_args );
-	
+
 		if($myposts) {
-            
+
             $output .= '<ul class="prog_active_list">';
-            
+
 		foreach ( $myposts as $post ) : setup_postdata( $post );
-	
+
 			$output .= '<li class="prog_active_item">&#8594; <a href="'.get_permalink().'">'.get_the_title().'</a></li>';
-	
+
 		endforeach;
-            
+
             $output .= '</ul>';
-            
+
 		}
-    
+
 		else {
 			$output = 'No workouts assigned';
-            
+
 		}
-	
+
 	wp_reset_postdata();
-	
+
 	$output .= '</div>';
 
 	// return our results/html
 	return $output;
-	
+
 }
 
 
@@ -203,12 +201,12 @@ function b2p_active_shortcode( $args, $content="") {
 // hint: list active fitness test posts using shortcode [b2p_active_tests]
 function b2p_active_test_shortcode( $args, $content="") {
 
-	// setup our output variable - the form html 
-		
+	// setup our output variable - the form html
+
 	global $post;
 	$current_user = wp_get_current_user();
 	$member_name = $current_user->first_name . " " . $current_user->last_name;
-	
+
 	$user_args = array(
 		'posts_per_page'   => 15,
 		'post_type' => array('fit_test'),
@@ -217,37 +215,37 @@ function b2p_active_test_shortcode( $args, $content="") {
 		'order' => 'ASC',
 		'post_status' => 'publish',
 	);
-	
+
 	$output = '<div class="member_post_sidebar">';
-		
+
 		$myposts = get_posts( $user_args );
-	
+
 		if($myposts) {
-            
+
             $output .= '<ul class="prog_active_list">';
-            
+
 		foreach ( $myposts as $post ) : setup_postdata( $post );
-	
+
 			$output .= '<li class="prog_active_item">&#8594; <a href="'.get_permalink().'">'.get_the_title().'</a></li>';
-	
+
 		endforeach;
-            
+
             $output .= '</ul>';
-            
+
 		}
-    
+
 		else {
 			$output = 'No Fitness Test Assigned';
-            
+
 		}
-	
+
 	wp_reset_postdata();
-	
+
 	$output .= '</div>';
 
 	// return our results/html
 	return $output;
-	
+
 }
 
 
@@ -258,7 +256,7 @@ function b2p_active_test_shortcode( $args, $content="") {
 // 3.1
 // hint: Add program column headers
 function b2p_program_column_headers( $columns ) {
-	
+
 	// creating custom column header data
 	$columns = array(
 		'cb'=>'<input type="checkbox" />',
@@ -266,16 +264,16 @@ function b2p_program_column_headers( $columns ) {
 		'author' =>__('Member'),
 		'date'=>__('Date')
 	);
-	
+
 	// returning new columns
 	return $columns;
-	
+
 }
 
 // 3.1b
 // hint: Add workout column headers
 function gf_workout_column_headers( $columns ) {
-	
+
 	// creating custom column header data
 	$columns = array(
 		'cb'=>'<input type="checkbox" />',
@@ -283,16 +281,16 @@ function gf_workout_column_headers( $columns ) {
 		'author' =>__('Member'),
 		'date'=>__('Date')
 	);
-	
+
 	// returning new columns
 	return $columns;
-	
+
 }
 
 // 3.1c
 // hint: Add fit-test column headers
 function hfc_fit_test_column_headers( $columns ) {
-	
+
 	// creating custom column header data
 	$columns = array(
 		'cb'=>'<input type="checkbox" />',
@@ -300,10 +298,10 @@ function hfc_fit_test_column_headers( $columns ) {
 		'author' =>__('Member'),
 		'date'=>__('Date')
 	);
-	
+
 	// returning new columns
 	return $columns;
-	
+
 }
 
 // 3.2
@@ -400,7 +398,7 @@ function add_author_filter_to_fit_test_administration(){
 // hint: restrict the posts by an additional author filter
 function add_author_filter_to_posts_query($query){
 
-    global $post_type, $pagenow; 
+    global $post_type, $pagenow;
 
     //if we are currently on the edit screen of the post type listings
     if($pagenow == 'edit.php' && $post_type == 'b2p_program'){
@@ -423,7 +421,7 @@ function add_author_filter_to_posts_query($query){
 // hint: restrict the posts by an additional author filter
 function add_author_filter_to_workout_query($query){
 
-    global $post_type, $pagenow; 
+    global $post_type, $pagenow;
 
     //if we are currently on the edit screen of the post type listings
     if($pagenow == 'edit.php' && $post_type == 'gf_workout'){
@@ -446,7 +444,7 @@ function add_author_filter_to_workout_query($query){
 // hint: restrict the posts by an additional author filter
 function add_author_filter_to_fit_test_query($query){
 
-    global $post_type, $pagenow; 
+    global $post_type, $pagenow;
 
     //if we are currently on the edit screen of the post type listings
     if($pagenow == 'edit.php' && $post_type == 'fit_test'){
@@ -472,19 +470,19 @@ function add_author_filter_to_fit_test_query($query){
 
 // 4.1 Loads external files into PUBLIC website
 function b2p_public_scripts() {
-    
+
     // register scripts with WordPress's internal library
     wp_register_script('b2p-js-public', 'https://hockeyfitclub.com/wp-content/themes/divi-child-hockeyfitclub/js/public/b2p_js.js', array('jquery'),'',true);
 	wp_register_script('gf-js-public', 'https://hockeyfitclub.com/wp-content/themes/divi-child-hockeyfitclub/js/public/gf_js.js', array('jquery'),'',true);
     wp_register_script('hfc-js-public', 'https://hockeyfitclub.com/wp-content/themes/divi-child-hockeyfitclub/js/public/hfc_fit_test_js.js', array('jquery'),'',true);
 //    wp_register_style('b2p-css-public', 'https://hockeyfitclub.com/wp-content/themes/divi-child-hockeyfitclub/css/public/b2p_style.css');
-	
+
     // add to que of scripts that get loaded into every page
     wp_enqueue_script('hfc-js-public');
     wp_enqueue_script('b2p-js-public');
 	wp_enqueue_script('gf-js-public');
 //	wp_enqueue_style('b2p-css-public');
-    
+
 }
 
 
@@ -496,7 +494,7 @@ function b2p_public_scripts() {
 // hint: Update weight value for each set in exercise from exercise_form.php
 
 function b2p_update_exercise(){
-	
+
 	if(isset($_POST)) {
 		$count = count($_POST) - 4;
 		$post_id = $_POST['program_id']; //passing post_id from exercise form
@@ -517,14 +515,14 @@ function b2p_update_exercise(){
 // hint: Update results value for each exercise from single-gf_workout.php
 
 function gf_exercise_results(){
-	
+
 	if(isset($_POST)) {
 		$count = count($_POST) - 2;
 		$post_id = $_POST['program_id']; //passing post_id from workout form
 		$day = $_POST['gf_day_num'];     //passing day number from workout form
 
 		//update_sub_field(array('gf_workout_programs', 1, 'gf_exercises', 4, 'gf_exercise_results'), 'Test Data', 2565);
-		
+
 			$exercise = 1;
 
 			while($exercise <= $count) {
@@ -539,11 +537,11 @@ function gf_exercise_results(){
 // hint: Update results for each fit-test form from single-fit_test.php
 
 //function hfc_update_fit_test(){
-//	
+//
 //	if(isset($_POST)) {
 //		$count = count($_POST) - 1;
 //		$post_id = $_POST['program_id']; //passing post_id from fit-test form
-//        
+//
 //			$max_test = 1;
 //
 //			while($max_test <= $count) {
@@ -571,7 +569,7 @@ function hfc_update_fit_test(){
         {
             update_field( 'test_end_date', $_POST['test_end_date'], $post_id );
         }
-        
+
         if ( ! empty( $_POST['coach_notes'] ) )
         {
             update_field( 'coach_notes', $_POST['coach_notes'], $post_id );
@@ -710,12 +708,12 @@ function login_error_override() {
 // hint: add pagination for archive templates
 function pagination_bar() {
     global $wp_query;
- 
+
     $total_pages = $wp_query->max_num_pages;
- 
+
     if ($total_pages > 1){
         $current_page = max(1, get_query_var('paged'));
- 
+
         echo paginate_links(array(
             'base' => get_pagenum_link(1) . '%_%',
             'format' => '/page/%#%',
@@ -727,9 +725,9 @@ function pagination_bar() {
 
 // 6.7
 // hint: add parent template style sheet
-function my_enqueue_assets() { 
-    wp_enqueue_style( 'parent-style', get_template_directory_uri().'/style.css' ); 
-} 
+function my_enqueue_assets() {
+    wp_enqueue_style( 'parent-style', get_template_directory_uri().'/style.css' );
+}
 
 // 6.8
 // hint: update footer content for Divi footer
