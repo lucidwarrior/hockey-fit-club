@@ -1,28 +1,47 @@
 /* -------------------- PUBLIC STYLES SHEET -------------------- */
 /* --------------------  TABLE OF CONTENTS -------------------- */
 
-/* 1. MENU STYLES
-/* 2. HOME PAGE STYLES
-/* 3. PROGRAM / WORKOUT TEMPLATE PAGE STYLES
-/* 4. EXERCISE TEMPLATE PAGE STYLES
-/* 5. FITNESS TEST TEMPLATE PAGE STYLES
-/* 6. MEMBERPRESS STYLES
-/* 7. MISCELLANEOUS STYLES
+/* 0. WORKOUT TEMPLATE
+/* 0.1 Desktop (min-width: 980px)
+/* 0.2 Tablet (min-width: 768px or max-width: 979px)
+/* 0.3 Phone (max-width: 767px)
+/* 1. WORKOUT TEMPLATE
+/* 1.1 Desktop
+/* 1.2 Tablet
+/* 1.3 Phone
+/* 2. EXERCISE TEMPLATE
+/* 2.1 Desktop
+/* 2.2 Tablet
+/* 2.3 Phone
+/* 3. FITNESS TEST TEMPLATE
+/* 3.1 Desktop
+/* 3.2 Tablet
+/* 3.3 Phone
+/* 4. ARCHIVE TEMPLATE
+/* 4.1 Desktop
+/* 4.2 Tablet
+/* 4.3 Phone
+/* 5. MEMBERPRESS
+/* 5.1 Desktop
+/* 5.2 Tablet
+/* 5.3 Phone
+/* 6. MISCELLANEOUS
+/* 6.1 Desktop
+/* 6.2 Tablet
+/* 6.3 Phone
 
 
-/* 1. ---------- MENU STYLES -------------------------------------- */
+/* 0. ---------------- GLOBAL ---------------- */
 
 /*** Main Menu ***/
 #main-header .nav li ul { width: 280px; }
 
-#top-menu li li a {
-    width: 260px;
-    padding-bottom: 6px !important; }
+#top-menu li li a { width: 260px; padding-bottom: 6px !important; }
 
 #top-menu li > a:hover {
     box-shadow: 0 5px 0 0 #d30716 !important; /*** COLOR AND THICKNESS OF THE LINE ON HOVER ***/
     padding-bottom: 34px;
-    opacity: 1 !important; 
+    opacity: 1 !important;
     color: #d30716; }
 
 #top-menu li.current-menu-item > a,
@@ -31,81 +50,129 @@
     padding: 10px;
     margin-bottom: -10px; }
 
+/*** Material design Programs section on Home Page ***/
+/* Content Overlay Effects */
+.progContainer { position: relative; width: 100%; }
+.progContainer:hover .progOverlay {opacity: 1; }
 
-/*** Change Logo on Mobile ***/
+.progImage {
+    display: block;
+    width: 100%;
+    height: auto; }
+
+.progOverlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgba(211,7,22,0.75); }
+
+.progText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%); }
+
+/* Button Effects */
+.material .et_pb_button_module_wrapper {
+    margin-top: -45px;
+    margin-bottom: 10px !important; }
+
+.material .et_pb_button {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16); }
+
+.material .et_pb_button:hover {
+    box-shadow: 0 25px 55px 0 rgba(0, 0, 0, 0.21), 0 16px 28px 0 rgba(0, 0, 0, 0.22);
+    margin-top: -5px;
+    margin-bottom: 5px !important; }
+
+/*** CTA Secondary Menu Bar ***/
+#top-header .container {
+    padding-top: 1.2em;
+    font-weight: 600;
+    padding-bottom: 0.70em; }
+
+#et-secondary-menu {
+    width: 33.3%;
+    padding-top: 6px;
+    float: right;
+    text-align: right; }
+
+.cta {
+    width: 33.3%;
+    padding-top: 4px;
+    float: left;
+    text-align:center; }
+
+#et-info {
+    width: 33.3%;
+    padding-top: 6px;
+    float: left;
+    text-align: left; }
+
+.cta a {
+    background: #fff;
+    color: #eb593c !important;
+    padding: 5px 10px;
+    display: inline-block;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-weight: 700 !important;
+    transition: all 0.5s; }
+
+.cta a:hover { background: #555; color: #fff !important; }
+
+
+/* 0.1 ------ GLOBAL - DESKTOP ------ */
+
+
+/* 0.2 ------ GLOBAL - TABLET ------ */
+
+/*** Change Logo on Tablet ***/
 @media (max-width: 980px) {
 	#logo {content: url("https://hockeyfitclub.com/wp-content/uploads/2017/12/HockeyFit_black_red_500.png");}
 }
 
-
-/*** Pagination Menu - Archive Templates ***/
-.pagination {
-    margin: 20px auto;
-    font-size: 16px;
-    text-align: center; }
-
-.page-numbers {
-    border: 1px solid black;
-    padding: 3px 7px; }
-
-span.page-numbers.current {
-    font-weight: bold;
-    font-size: 22px;
-    color: #000000; }
-
-a.page-numbers:hover {
-    font-weight: bold;
-    font-size: 20px;
-    padding: 2px 6px; }
-
-
-/*** Exercise Taxonomy Archives Menu Bar - Desktop ***/
-@media only screen and (min-width: 981px) { 
-    .eFocusMenuMobile {display: none;}
+/* CTA Secondary Menu Bar - Tablet */
+@media (max-width: 980px) {
+    .cta {display:none;}
+    #et-info {width: 100%;}
 }
 
-.eFocusMenu {
-    max-width: 1250px;
-    padding: 20px;
-    border: 1px solid #000000; }
+/* CTA Secondary Menu Bar - Tablet */
+@media (max-width: 980px) {
+    .cta {
+        width: 50%;
+        text-align:center;
+        float: left;
+        margin-top: -3px; }
 
-li.eFocusMenuTitle {
-    font-size: 20px;
-    float: left;
-    margin-right: 20px;
-    color: #000000;
-    line-height: 1.50em !important; }
-
-li.eFocusMenuItem {
-    float: left;
-    margin-right: 10px; }
-
-
-/*** Exercise Taxonomy Archives Menu Bar - Mobile ***/
-@media only screen and (max-width: 980px) { 
-    .eFocusMenu { display: none; }
+    #et-info {
+        width: 50%;
+        float: left;
+        text-align: left;
+        padding-top:0px;
+        padding-bottom: 0.75em; }
 }
 
-#upperFocusMenu { padding-bottom: 10px; }
 
-.eFocusMenuMobile {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #000000; }
+/* 0.3 ------ GLOBAL - PHONE ------ */
 
-li.eFocusMenuItem {
-    float: left;
-    margin-right: 5px; }
 
+
+
+/* 1. ---------------- WORKOUT TEMPLATE ---------------- */
 
 /***  Program Navigation Bar (Week & Day buttons) Styling - Desktop ***/
 #nav_Menu {margin: 0; }
 #gf_nav_Menu {margin: 0; }
-
-@media only screen and (min-width: 981px) { 
-#exerciseMobileMenu {display: none;}
-#gf_exerciseMobileMenu {display: none;}
-}
 
 /* Style menu bar */
 ul.topnav, ul.gf_topnav {
@@ -157,231 +224,6 @@ ul.topnav li a:hover, ul.gf_topnav li a:hover {
     border-right: solid 2px #3f4444 !important;
     border-bottom: solid 2px #3f4444 !important; }
 
-
-/***  Program Navigation Bar (Week & Day buttons) Styling - Mobile ***/
-@media only screen and (max-width: 980px) { 
-    #exerciseMenu {display: none;}
-    #gf_exerciseMenu {display: none;}
-    .container {width: 95% !important;}
-}
-
-
-/* Style menu bar */
-ul.topnav_mobile {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #747d7d;
-    border-top: solid 1px #000;
-    border-left: solid 1px #000;
-    border-right: solid 1px #000; }
-
-/* Float the list items side by side */
-ul.topnav_mobile li {float: left;}
-
-/* Style the links inside the list items */
-ul.topnav_mobile li a {
-    display: inline-block;
-    color: #fff;
-    background-color: #676d6d;
-    text-align: center;
-    padding: 4px 6px;
-    margin: 0 1px;
-    text-decoration: none;
-    font-size: 16px;
-    border-top: solid 4px #747d7d;
-    border-left: solid 2px #747d7d;
-    border-right: solid 2px #747d7d;
-    border-bottom: solid 2px #676d6d; }
-
-ul#myTopWeekNav.topnav_mobile {
-    width: 100%;
-    padding: 0px 0px;
-    list-style-type: none;
-    margin: auto; }
-
-#myTopWeekNav a {
-    display: block;
-    text-align: center;
-    margin: 0 auto; }
-
-ul#myTopDayNav.topnav_mobile {
-    padding: 0px 0px;
-    list-style-type: none;
-    margin: auto; }
-
-/* Change style of links on hover */
-ul.topnav_mobile li a:hover {
-    background-color: #3f4444;
-    border-top: solid 2px #3f4444 !important;
-    border-left: solid 2px #3f4444 !important;
-    border-right: solid 2px #3f4444 !important;
-    border-bottom: solid 2px #3f4444 !important;
-    padding: 4px 6px; }
-
-/* Change style of active link */
-.activeDay a {
-    background-color: #3f4444 !important;
-    border-top: solid 2px #3f4444 !important;
-    border-left: solid 2px #3f4444 !important;
-    border-right: solid 2px #3f4444 !important;
-    border-bottom: solid 2px #3f4444 !important; }
-
-
-/*** CTA Secondary Menu Bar ***/
-#top-header .container {
-    padding-top: 1.2em;
-    font-weight: 600;
-    padding-bottom: 0.70em; }
-
-#et-secondary-menu {
-    width: 33.3%;
-    padding-top: 6px;
-    float: right;
-    text-align: right; }
- 
-.cta {
-    width: 33.3%;
-    padding-top: 4px;
-    float: left;
-    text-align:center; }
- 
-#et-info {
-    width: 33.3%;
-    padding-top: 6px;
-    float: left;
-    text-align: left; }
-
-.cta a {
-    background: #fff;
-    color: #eb593c !important;
-    padding: 5px 10px;
-    display: inline-block;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    font-weight: 700 !important;
-    transition: all 0.5s; }
- 
-.cta a:hover {
-    background: #555;
-    color: #fff !important; }
-
-/* CTA Secondary Menu Bar - Tablet */
-@media (max-width: 980px) {
-    .cta {
-        width: 50%;
-        text-align:center;
-        float: left;
-        margin-top: -3px; }
-
-    #et-info {
-        width: 50%;
-        float: left;
-        text-align: left;
-        padding-top:0px;
-        padding-bottom: 0.75em; }
-}
-
-/* CTA Secondary Menu Bar - Phone */
-@media (max-width: 980px) {
-    .cta {display:none;}
-    #et-info {width: 100%;}
-}
-
-
-
-
-/* 2. ---------- HOME PAGE STYLES --------------------------------- */
-
-
-/*** Material design Programs section on Home Page ***/
-
-/* Content Overlay Effects */
-.progContainer {
-    position: relative;
-    width: 100%; }
-
-.progImage {
-    display: block;
-    width: 100%;
-    height: auto; }
-
-.progOverlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    transition: .5s ease;
-    background-color: rgba(211,7,22,0.75); }
-
-.progContainer:hover .progOverlay {opacity: 1; }
-
-.progText {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%); }
-
-/* Button Effects */
-.material .et_pb_button_module_wrapper {
-    margin-top: -45px;
-    margin-bottom: 10px !important; }
-
-.material .et_pb_button {
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16); }
-
-.material .et_pb_button:hover {
-    box-shadow: 0 25px 55px 0 rgba(0, 0, 0, 0.21), 0 16px 28px 0 rgba(0, 0, 0, 0.22);
-    margin-top: -5px;
-    margin-bottom: 5px !important; }
-  
-.material .et_pb_button:hover:after {
-    line-height: 1.7em;  
-    -webkit-transform: rotate(-90deg);
-    transform: rotate(-90deg); }
-
-/* More Programs button effects */
-/*
-.mbutton .et_pb_button {
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16); }
-
-.mbutton .et_pb_button:hover {
-    box-shadow: 0 25px 55px 0 rgba(0, 0, 0, 0.21), 0 16px 28px 0 rgba(0, 0, 0, 0.22);
-    margin-top: -5px;
-    margin-bottom: 5px !important; }
-  
-.mbutton .et_pb_button:hover:after {
-    line-height: 1.7em;  
-    -webkit-transform: rotate(-90deg);
-    transform: rotate(-90deg); }
-*/
-
-/* Row effects */
-/*
-.material.et_pb_row {padding: 27px 15px;}
- 
-.material .et_pb_column {
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
-    -webkit-transition: all .2s ease-out;
-    -moz-transition: all 0.2s ease-out;
-    -ms-transition: all 0.2s ease-out;
-    -o-transition: all 0.2s ease-out;
-    transition: all 0.2s ease-out; }
- 
-.material .et_pb_column:hover {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.23), 0 6px 20px rgba(0, 0, 0, 0.16); }
-*/
-
-
-
-/* 3. ---------- PROGRAM TEMPLATE PAGE STYLES --------------------- */
 
 /***  Program / Workout Template - Content Styling ***/
 .prog-container {
@@ -484,9 +326,116 @@ ul.topnav_mobile li a:hover {
     background: #3f4444;
     border-color: #fff; }
 
+/*** Update Workout Form Style Sheet ***/
+
+/* Add style to update button */
+.gf_workout_day form input[type='submit'], .fit_test_form form input[type='submit']  {
+    font-size: 14px !important;
+    color: #fff !important;
+    background: #676d6d !important;
+    border-color: #676d6d !important;
+    cursor: pointer !important; }
+
+.gf_workout_day form input[type='submit']:hover, .fit_test_form form input[type='submit']:hover {
+    background: #3f4444 !important;
+    border-color: #fff !important; }
+
+.gf_exercise form input[type='text'] {
+}
+
+.gf_exercise input[type=text] {
+    padding: 4px !important;
+    border: 1px solid #bbb;
+    color: black;
+    font-size: 125%;
+    width: 100%;
+}
+
+.gf_exercise input[type=text]:focus {
+    background-color: lightblue;
+}
+
+/* 1.1 ------ WORKOUT TEMPLATE - DESKTOP ------ */
+
+@media only screen and (min-width: 981px) {
+#exerciseMobileMenu {display: none;}
+#gf_exerciseMobileMenu {display: none;}
+}
+
+/* 1.2 ------ WORKOUT TEMPLATE - TABLET ------ */
+
+/***  Program Navigation Bar (Week & Day buttons) Styling - Tablet ***/
+@media only screen and (max-width: 980px) {
+    #exerciseMenu {display: none;}
+    #gf_exerciseMenu {display: none;}
+    .container {width: 95% !important;}
+}
+
+/* Style menu bar */
+ul.topnav_mobile {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #747d7d;
+    border-top: solid 1px #000;
+    border-left: solid 1px #000;
+    border-right: solid 1px #000; }
+
+/* Float the list items side by side */
+ul.topnav_mobile li {float: left;}
+
+/* Style the links inside the list items */
+ul.topnav_mobile li a {
+    display: inline-block;
+    color: #fff;
+    background-color: #676d6d;
+    text-align: center;
+    padding: 4px 6px;
+    margin: 0 1px;
+    text-decoration: none;
+    font-size: 16px;
+    border-top: solid 4px #747d7d;
+    border-left: solid 2px #747d7d;
+    border-right: solid 2px #747d7d;
+    border-bottom: solid 2px #676d6d; }
+
+ul#myTopWeekNav.topnav_mobile {
+    width: 100%;
+    padding: 0px 0px;
+    list-style-type: none;
+    margin: auto; }
+
+#myTopWeekNav a {
+    display: block;
+    text-align: center;
+    margin: 0 auto; }
+
+ul#myTopDayNav.topnav_mobile {
+    padding: 0px 0px;
+    list-style-type: none;
+    margin: auto; }
+
+/* Change style of links on hover */
+ul.topnav_mobile li a:hover {
+    background-color: #3f4444;
+    border-top: solid 2px #3f4444 !important;
+    border-left: solid 2px #3f4444 !important;
+    border-right: solid 2px #3f4444 !important;
+    border-bottom: solid 2px #3f4444 !important;
+    padding: 4px 6px; }
+
+/* Change style of active link */
+.activeDay a {
+    background-color: #3f4444 !important;
+    border-top: solid 2px #3f4444 !important;
+    border-left: solid 2px #3f4444 !important;
+    border-right: solid 2px #3f4444 !important;
+    border-bottom: solid 2px #3f4444 !important; }
+
 
 /* Modifications for small screens */
-@media only screen and (max-width: 980px) { 
+@media only screen and (max-width: 980px) {
 .prog-container {
     padding-top: 0px;
     width: 95%;
@@ -508,68 +457,12 @@ ul.topnav_mobile li a:hover {
     width: 100%; }
 }
 
+/* 1.3 ------ WORKOUT TEMPLATE - PHONE ------ */
 
 
 
-/* 4. ---------- EXERCISE TEMPLATE PAGE STYLES -------------------- */
 
-
-/*** Exercise and Taxonomy Archive Templates - Desktop ***/
-.exercise-container {
-    max-width: 1250px;
-    position: relative;
-    text-align: left;
-    padding-top: 100px;
-    margin: auto;
-    width: 90%;
-    margin-bottom: 75px; }
-
-.eBlocks {
-    float: left;
-    padding: 5px;
-    border: solid 1px black;
-    background-color: white;
-    margin: 6px;
-    border-radius: 5px;
-    min-height: 310px;
-    width: 49%; }
-
-.eBlockImage {
-     float: left; }
-
-.eBlockContents {
-    float:left;
-    margin-left: 10px;
-    max-width: 80%;
- }
-
-.taxList {line-height: 0.5em;}
-
-
-/*** Exercise and Taxonomy Archive Templates - Mobile ***/
-@media only screen and (max-width: 980px) { 
-.eBlocks {
-    padding: 5px;
-    border: solid 1px black;
-    background-color: white;
-    margin: 4px;
-    border-radius: 5px;
-    min-height: 310px;
-    width: 100%; }
-
-.eBlockImage {
-    width: 100%;
-    padding: 5px;
-}
-
-.eBlockContents {
-    margin-left: 10px;
-    max-width: 100%;
- }
-
-.eBlockContents h3 { text-align: left;}
-}
-
+/* 2. ---------------- EXERCISE TEMPLATE ---------------- */
 
 /*** Exercise Detail Page ***/
 .pBlockImage { float: left; }
@@ -627,41 +520,16 @@ ul.topnav_mobile li a:hover {
 
 .set_weight_update { overflow: hidden; }
 
+/* 2.1 ------ EXERCISE TEMPLATE - DESKTOP ------ */
 
-/*** Update Workout Form Style Sheet ***/
+/* 2.2 ------ EXERCISE TEMPLATE - TABLET ------ */
 
-/* Add style to update button */
-.gf_workout_day form input[type='submit'], .fit_test_form form input[type='submit']  {
-    font-size: 14px !important;
-    color: #fff !important;
-    background: #676d6d !important;
-    border-color: #676d6d !important;
-    cursor: pointer !important; }
-
-.gf_workout_day form input[type='submit']:hover, .fit_test_form form input[type='submit']:hover {
-    background: #3f4444 !important;
-    border-color: #fff !important; }
-
-.gf_exercise form input[type='text'] {
-}
-
-.gf_exercise input[type=text] {
-    padding: 4px !important;
-    border: 1px solid #bbb;
-    color: black;
-    font-size: 125%;
-    width: 100%;
-}
-
-.gf_exercise input[type=text]:focus {
-    background-color: lightblue;
-}
+/* 2.3 ------ EXERCISE TEMPLATE - PHONE ------ */
 
 
 
 
-/* 5. ---------- FITNESS TEST TEMPLATE PAGE STYLES -------------------- */
-
+/* 3. ---------------- FITNESS TEST TEMPLATE ---------------- */
 
 /*** Fit-Test Detail Page ***/
 
@@ -671,45 +539,23 @@ ul.topnav_mobile li a:hover {
 
 .fit_test_section_title {}
 
-#fit_test_info {
-    border: solid 1px black;
-    padding: 10px;
-}
-
-
-/* Fitness Test Date Style */
-#date_container {
-    margin-top: 15px;
-}
-
-@media only screen and (min-width: 981px) {
-    #fit_test_start_date {
-    float:left;
-    padding-right: 15px;
-    }
-}
-
-@media only screen and (max-width: 980px) {
-    #fit_test_start_date {
-    padding-right: 15px;
-    padding-bottom: 10px;
-    }   
-}
+#fit_test_info { border: solid 1px black; padding: 10px; }
 
 #fit_test_end_date {}
 
 .fit_test_date_input {}
 
+#fit_test_end_value {}
+
+.fit_test_results_input {}
+
+/* Fitness Test Date Style */
+#date_container { margin-top: 15px; }
 
 /* Fitness Video Style */
-.video_link::before {
-    content: " | ";
-}
+.video_link::before { content: " | "; }
 
-.video_link::after {
-    content: " | ";
-}
-
+.video_link::after { content: " | "; }
 
 /* Movement Section Style */
 .movement_perf_content {
@@ -724,7 +570,6 @@ ul.topnav_mobile li a:hover {
     padding: 10px;
 }
 
-
 /* Max Performance Section Style */
 .max_perf_content {
     margin-bottom: 25px;
@@ -738,33 +583,10 @@ ul.topnav_mobile li a:hover {
     padding: 10px;
 }
 
-
 /* Fitness Test Max Values Style */
-#fit_test_value_container {
-    margin-top: 15px;
-}
-
-@media only screen and (min-width: 981px) {
-    #fit_test_start_value {
-    float:left;
-    padding-right: 15px;
-    }
-}
-
-@media only screen and (max-width: 980px) {
-    #fit_test_start_value {
-    padding-right: 15px;
-    padding-bottom: 10px;
-    }   
-}
-
-#fit_test_end_value {}
-
-.fit_test_results_input {}
-
+#fit_test_value_container { margin-top: 15px; }
 
 /*** Update Fit-Test Form Style Sheet ***/
-
 /* Add style to update button */
 #fit_test_results_form form input[type='submit'] {
     font-size: 14px !important;
@@ -779,24 +601,168 @@ ul.topnav_mobile li a:hover {
 
 #fit_test_results_form form input[type='number'] { width: 50px; }
 
-#submit_container {
-    
+#submit_container {}
+
+/* 3.1 ------ FITNESS TEST TEMPLATE - DESKTOP ------ */
+@media only screen and (min-width: 981px) {
+    #fit_test_start_date {
+    float:left;
+    padding-right: 15px;
+    }
+    #fit_test_start_value {
+    float:left;
+    padding-right: 15px;
+    }
 }
 
+/* 3.2 ------ FITNESS TEST TEMPLATE - TABLET ------ */
 
-/* 6. ---------- MEMBERPRESS STYLES ------------------------------- */
+@media only screen and (max-width: 980px) {
+    #fit_test_start_date {
+    padding-right: 15px;
+    padding-bottom: 10px;
+    }
+	#fit_test_start_value {
+    padding-right: 15px;
+    padding-bottom: 10px;
+    }
+}
 
+/* 3.3 ------ FITNESS TEST TEMPLATE - PHONE ------ */
+
+
+
+
+/* 4. ---------------- ARCHIVE TEMPLATE ---------------- */
+
+/*** Pagination Menu - Archive Templates ***/
+.pagination {
+    margin: 20px auto;
+    font-size: 16px;
+    text-align: center; }
+
+.page-numbers {
+    border: 1px solid black;
+    padding: 3px 7px; }
+
+span.page-numbers.current {
+    font-weight: bold;
+    font-size: 22px;
+    color: #000000; }
+
+a.page-numbers:hover {
+    font-weight: bold;
+    font-size: 20px;
+    padding: 2px 6px; }
+
+.eFocusMenu {
+    max-width: 1250px;
+    padding: 20px;
+    border: 1px solid #000000; }
+
+li.eFocusMenuTitle {
+    font-size: 20px;
+    float: left;
+    margin-right: 20px;
+    color: #000000;
+    line-height: 1.50em !important; }
+
+li.eFocusMenuItem { float: left; margin-right: 10px; }
+
+/*** Exercise and Taxonomy Archive Templates - Desktop ***/
+.exercise-container {
+    max-width: 1250px;
+    position: relative;
+    text-align: left;
+    padding-top: 100px;
+    margin: auto;
+    width: 90%;
+    margin-bottom: 75px; }
+
+.eBlocks {
+    float: left;
+    padding: 5px;
+    border: solid 1px black;
+    background-color: white;
+    margin: 6px;
+    border-radius: 5px;
+    min-height: 310px;
+    width: 49%; }
+
+.eBlockImage { float: left; }
+
+.eBlockContents {
+    float:left;
+    margin-left: 10px;
+    max-width: 80%;
+ }
+
+.taxList {line-height: 0.5em;}
+
+#upperFocusMenu { padding-bottom: 10px; }
+
+li.eFocusMenuItem { float: left; margin-right: 5px; }
+
+/* 4.1 ------ ARCHIVE TEMPLATE - DESKTOP ------ */
+
+/*** Exercise Taxonomy Archives Menu Bar - Desktop ***/
+@media only screen and (min-width: 981px) {
+    .eFocusMenuMobile {display: none;}
+}
+
+/* 4.2 ------ ARCHIVE TEMPLATE - TABLET ------ */
+
+/*** Exercise Taxonomy Archives Menu Bar - Mobile ***/
+@media only screen and (max-width: 980px) {
+    .eFocusMenu { display: none; }
+}
+
+.eFocusMenuMobile {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #000000; }
+
+
+/*** Exercise and Taxonomy Archive Templates - Tablet ***/
+@media only screen and (max-width: 980px) {
+.eBlocks {
+    padding: 5px;
+    border: solid 1px black;
+    background-color: white;
+    margin: 4px;
+    border-radius: 5px;
+    min-height: 310px;
+    width: 100%; }
+
+.eBlockImage {
+    width: 100%;
+    padding: 5px;
+}
+
+.eBlockContents {
+    margin-left: 10px;
+    max-width: 100%;
+ }
+
+.eBlockContents h3 { text-align: left;}
+}
+
+/* 4.3 ------ ARCHIVE TEMPLATE - PHONE ------ */
+
+
+
+
+/* 5. ---------------- MEMBERPRESS TEMPLATE ---------------- */
 
 /* MemberPress Unauthorized Access Notice and Sign-In */
 .mepr-unauthorized-message {
 margin: 25px auto; }
 
 .mepr-login-form-wrap {
-margin: 25px auto; 
+margin: 25px auto;
 border: solid 1px black;
 padding: 10px;
 }
-
 
 /*** Membership Plan Group Template ***/
 .mepr-price-box-title {font-size: 24px !important;}
@@ -810,13 +776,13 @@ padding: 10px;
     border-bottom: 3px solid black;
     border-right: 1px solid black; }
 
-.mepr-price-menu.fixed .mepr-price-box.highlighted .mepr-price-box-title, 
+.mepr-price-menu.fixed .mepr-price-box.highlighted .mepr-price-box-title,
 .mepr-price-menu.fixed .mepr-price-box.highlighted .mepr-price-box-price {
     color: #ffffff; }
 
-.mepr-price-menu.fixed.clean .mepr-price-box.highlighted .mepr-price-box-heading, 
+.mepr-price-menu.fixed.clean .mepr-price-box.highlighted .mepr-price-box-heading,
 .mepr-price-menu.fixed.clean .mepr-price-box.highlighted .mepr-price-box-benefits {
-    color: #ffffff;    
+    color: #ffffff;
     background-color: #d30716; }
 
 .mepr-price-menu.fixed .mepr-price-box.highlighted .mepr-price-box-footer {color: #ffffff;}
@@ -828,17 +794,20 @@ padding: 10px;
 
 /* Membership Page Template */
 
-.prog_active_list {
-	
-}
+.prog_active_list {}
 
-.prog_active_item a {
-	color: #0c71c3 !important;
-    font-weight: 600;
-}
+.prog_active_item a { color: #0c71c3 !important; font-weight: 600; }
+
+/* 5.1 ------ MEMBERPRESS TEMPLATE - DESKTOP ------ */
+
+/* 5.2 ------ MEMBERPRESS TEMPLATE - TABLET ------ */
+
+/* 5.3 ------ MEMBERPRESS TEMPLATE - PHONE ------ */
 
 
-/* 7. ---------- MISCELLANEOUS STYLES ------------------------------- */
+
+
+/* 6. ---------------- MISCELLANEOUS TEMPLATE ---------------- */
 
 /*** Program Page Print Function Style Sheet ***/
 
@@ -898,42 +867,6 @@ padding: 10px;
     }
 }
 
-
-/*
-** Testimonial Slider **
-.testimonial-slider, .testimonial-slider .et_pb_container { height: auto !important; }
-
-.testimonial-slider, .testimonial-slider .et_pb_slide {
-    max-height: auto;
-    min-height: 225px;
-    border: 1px solid #fff;
-    outline: 30px solid #000; }
-
-.testimonial-slider .et_pb_slide_description {
-    position: relative;
-    top: 25%;
-    padding-top: 20px !important;
-    padding-bottom: 10px !important;
-    height: auto !important; }
-
-.testimonial-slider .et_pb_testimonial_portrait {
-    display: table-cell;
-    float: left;
-    position: relative;
-    width: 175px !important;
-    height: 175px !important;
-    margin-right: 30px;
-    border: 3px solid #ffffff;
-    background-repeat: no-repeat;
-    background-position: center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover; }
-
-.testimonial-slider .et-pb-controllers a { border-radius: 0px; }
-*/
-
-
 /*** Vertical line between left and right containers ***/
 #main-content .container:before {
     top: 215px;
@@ -942,3 +875,10 @@ padding: 10px;
 .widgettitle {
 	color: #d30716 !important;
 }
+
+
+/* 6.1 ------ MISCELLANEOUS TEMPLATE - DESKTOP ------ */
+
+/* 6.2 ------ MISCELLANEOUS TEMPLATE - TABLET ------ */
+
+/* 6.3 ------ MISCELLANEOUS TEMPLATE - PHONE ------ */
